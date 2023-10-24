@@ -7,12 +7,12 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+	    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 		<title>Welcome - UmbracoTV</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
 		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-		<script src="/scripts/request.js"></script>
 		<link rel="stylesheet" href="/css/main.css" />
 	</head>
 	
@@ -34,7 +34,7 @@
 		<div class="container">
 			<div class="row section">
 				<div class="col-lg-10">
-                    <form class="inputForm">
+                    <form class="inputForm" onclick="event.preventDefault()">
                         <div class="form-group">
                             <label for="inputUsernamr">Username:</label>
                             <input type="text" class="form-control" id="usernameInput" aria-describedby="emailHelp" placeholder="Enter your full name">
@@ -47,14 +47,14 @@
                         </div>
                             <div class="form-group form-check">
                         </div>
-                        <button type="submit" onclick="getJson()" class="btn btn-primary">Submit</button>
+                        <button type="add" id="buttonAuthorization" onclick="sendRequest()" class="btn btn-primary">Submit</button>
                     </form>
 				</div>				
 			</div>
 		</div>
 	<!-- Scripts -->
+	<script src="/scripts/request.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
-	
 	</body>
 </html>

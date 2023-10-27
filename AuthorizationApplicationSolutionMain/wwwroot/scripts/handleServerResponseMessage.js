@@ -50,10 +50,13 @@ function foundUser(response) {
         myAlertSuccess.style.display = "block";
         let userInfo = catchResponseMessage(response);
 
-        let t = document.createElement("a");
-        t.append("FirstName: " + userInfo[0] + ",");
-        t.append("LastName: " + userInfo[1] + ",");
-        document.getElementById('successResponse').append(t);
+        let aElement = document.createElement("a");
+        aElement.append("FirstName:  " + userInfo[0] + ", ");
+        aElement.append("LastName:  " + userInfo[1] + ", ");
+        aElement.append("Mobile:  " + userInfo[2] + ", ");
+        aElement.append("Email:  " + userInfo[3] + ", ");
+        aElement.append("CountryId:  " + userInfo[4] + ".");
+        document.getElementById('successResponse').append(aElement);
     }
 }
 

@@ -8,7 +8,6 @@
 <html>
 	<head>
 	    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
-		<title>Welcome - UmbracoTV</title>
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
@@ -17,19 +16,15 @@
 	</head>
 	
 	<body>
-
-		<!-- Navigation -->
+	    
 		<div class="containerHeader">
 			<nav class="navbar navbar-expand navbar-light">
 				<a class="navbar-brand font-weight-bold">LOGO</a>
-				<!-- Links -->
 				<ul class="navbar-nav">
 					@Model.Value("header", fallback: Fallback.ToDefaultValue, defaultValue: new HtmlString("Menu1 | Menu 2 | Menu 3"))
 				</ul>
 			</nav>
 		</div>
-
-		<!-- This is where we're going to render our content -->
 		
 		<div class="container">
 			<div class="row section">
@@ -51,8 +46,20 @@
                     </form>
 				</div>				
 			</div>
+			<div id="myAlertSuccess" class="alert alert-success" style = "display:none" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="13" height="24"/></svg>
+                <div id = "successResponse">
+                    <br>User found!</br> <br>User information:</br>
+                </div>
+            </div>
+            <div id="myAlertError" class="alert alert-danger" style = "display:none" role="alert">
+            <svg class="bi flex-shrink-0 me-2" width="10" height="10"/></svg>
+                <div>
+                    User not found!
+                </div>
+            </div>
 		</div>
-	<!-- Scripts -->
+	<script src="/scripts/handleServerResponseMessage.js"></script>	
 	<script src="/scripts/request.js"></script>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>

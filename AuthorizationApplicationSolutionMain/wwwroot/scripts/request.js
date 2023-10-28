@@ -10,9 +10,11 @@ async function sendRequest() {
     xhr.onload = () => {
         const response = xhr.response;
         const responseMessage = foundUser(response);
-        console.log(responseMessage);
+        if(responseMessage == "User exsict") {
+            response = null;
+        }
     }
-
+    
     xhr.send(getBodyXmlRequest(username,password));
 }
 
@@ -44,7 +46,7 @@ function createNewUser(username,password) {
     '   xmlns:xsd="http://www.w3.org/2001/XMLSchema" ' +
     '   xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" ' +
     '   xmlns:enc="http://www.w3.org/2003/05/soap-encoding">' +
-    '   <env:Body>' +//igor.gulyaev.92@list.ru
+    '   <env:Body>' +
     '       <ns1:RegisterNewCustomer env:encodingStyle="http://www.w3.org/2003/05/soap-encoding">' +
     `           <Email xsi:type="xsd:string">${username}</Email>` +
     '           <FirstName xsi:type="xsd:string">DavidS</FirstName>' +

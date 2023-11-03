@@ -1,4 +1,4 @@
-function catchResponseMessage(response) {
+function catchUserInformationFromServer(response) {
     const cutFirstPartMassege = response.split('{');
     const cutSecondPartMessage = cutFirstPartMassege[1].split('}');
     const userInformation = cutSecondPartMessage[0]
@@ -25,34 +25,35 @@ function catchResponseMessage(response) {
     return result;
 }
 
-function foundUser(response) {
+function spitServerMessage(response) {
     const cutFirstPartMassege = response.split('{');
     const cutSecondPartMessage = cutFirstPartMassege[1].split('}');
-    const splitResultCode = cutSecondPartMessage[0].split(':');
-    const resultCode = splitResultCode[1].split(',');
-    let myAlertError;
-    let myAlertSuccess;
+    const splitServerResultCode = cutSecondPartMessage[0].split(':');
+    const serverResultCode = splitServerResultCode[1].split(',');
+    let errorMessage;
+    let successMessage;
 
     
-    if(resultCode[0] == "-1") {
-        myAlertSuccess  = document.getElementById('myAlertSuccess');
-        myAlertSuccess.style.display = "none";
-        myAlertError = document.getElementById('myAlertError');
-        myAlertError.style.display = "block";
+    if(serverResultCode[0] == "-1") {
+        successMessage  = document.getElementById('myAlertSuccess');
+        successMessage.style.display = "none";
+        errorMessage = document.getElementById('myAlertError');
+        errorMessage.style.display = "block";
     }
     else { 
-        myAlertError = document.getElementById('myAlertError');
-        myAlertError.style.display = "none";
-        myAlertSuccess  = document.getElementById('myAlertSuccess');
-        myAlertSuccess.style.display = "block";
-        let userInfo = catchResponseMessage(response);
-        createUserInfoElement(userInfo);
+        errorMessage = document.getElementById('myAlertError');
+        errorMessage.style.display = "none";
+        successMessage  = document.getElementById('myAlertSuccess');
+        successMessage.style.display = "block";
+        let userInfo = catchUserInformationFromServer(response);
+        showUserInformation(userInfo);
     }
 }
 
-function createUserInfoElement(userInfo) {
+function showUserInformation(userInfo) {
     let aElement = document.createElement("a");
-    if(document.querySelector("#successResponse").textContent.length == 37)
+    const aElementDefaultLength = 17;
+    if(document.querySelector("#successResponse").textContent.length == aElementDefaultLength)
     {
         aElement.append("FirstName:  " + userInfo[0] + ", ");
         aElement.append("LastName:  " + userInfo[1] + ", ");

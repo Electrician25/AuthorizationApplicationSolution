@@ -26,6 +26,7 @@ namespace AuthorizationApplicationSolution
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                
             }
 
             app.UseUmbraco()

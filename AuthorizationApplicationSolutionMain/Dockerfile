@@ -1,7 +1,5 @@
 FROM mcr.microsoft.com/dotnet/aspnet:7.0 AS base
 WORKDIR /app
-EXPOSE 80
-EXPOSE 443
 
 FROM mcr.microsoft.com/dotnet/sdk:7.0 AS build
 WORKDIR /src
@@ -16,4 +14,7 @@ RUN dotnet publish "AuthorizationApplicationSolution.csproj" -c Release -o /app/
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-ENTRYPOINT ["dotnet", "AuthorizationApplicationSolution.dll"]
+RUN mkdir /app/wwwroot/media
+RUN mkdir /app/wwwroot/soap
+EXPOSE 5100
+ENTRYPOINT dotnet AuthorizationApplicationSolution.dll --urls "https://0.0.0.0:5100/"

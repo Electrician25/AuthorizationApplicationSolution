@@ -1,0 +1,8 @@
+services:
+  mekashrontesttask:
+    container_name: mekashrontesttask-aspnet_container
+    build:
+      dockerfile: ./Dockerfile
+    image: mekashrontesttask-aspnet_image
+    ports:
+      - 25565:5100

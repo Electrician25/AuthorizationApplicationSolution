@@ -32,19 +32,34 @@ function spitServerMessage(response) {
     const serverResultCode = splitServerResultCode[1].split(',');
     let errorMessage;
     let successMessage;
+    let aLotOfRequests;
 
-    
-    if(serverResultCode[0] == "-1") {
+    if (serverResultCode[0] == "-2") {
+        successMessage = document.getElementById('myAlertSuccess');
+        successMessage.style.display = "none";
+        aLotOfRequests = document.getElementById('TooManyRequests');
+        aLotOfRequests.style.display = "block";
+        errorMessage = document.getElementById('myAlertError');
+        errorMessage.style.display = "none";
+       
+    }
+
+    else if(serverResultCode[0] == "-1") {
         successMessage  = document.getElementById('myAlertSuccess');
         successMessage.style.display = "none";
         errorMessage = document.getElementById('myAlertError');
         errorMessage.style.display = "block";
+        aLotOfRequests = document.getElementById('TooManyRequests');
+        aLotOfRequests.style.display = "none";
     }
+
     else { 
         errorMessage = document.getElementById('myAlertError');
         errorMessage.style.display = "none";
         successMessage  = document.getElementById('myAlertSuccess');
         successMessage.style.display = "block";
+        aLotOfRequests = document.getElementById('TooManyRequests');
+        aLotOfRequests.style.display = "none";
         let userInfo = catchUserInformationFromServer(response);
         showUserInformation(userInfo);
     }
@@ -52,8 +67,8 @@ function spitServerMessage(response) {
 
 function showUserInformation(userInfo) {
     let aElement = document.createElement("a");
-    const aElementDefaultLength = 17;
-    if(document.querySelector("#successResponse").textContent.length == aElementDefaultLength)
+    const aElementDefaultLength = 1;
+    if (document.querySelector("#successResponse").textContent.length == aElementDefaultLength)
     {
         aElement.append("FirstName:  " + userInfo[0] + ", ");
         aElement.append("LastName:  " + userInfo[1] + ", ");

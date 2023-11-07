@@ -17,4 +17,4 @@ COPY --from=publish /app/publish .
 RUN mkdir /app/wwwroot/media
 RUN mkdir /app/wwwroot/soap
 EXPOSE 5100
-ENTRYPOINT dotnet AuthorizationApplicationSolution.dll --urls "https://0.0.0.0:5100/"
+ENTRYPOINT dotnet AuthorizationApplicationSolution.dll --urls "http://0.0.0.0:5100/"

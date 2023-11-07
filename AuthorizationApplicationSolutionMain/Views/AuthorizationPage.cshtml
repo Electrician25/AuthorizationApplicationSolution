@@ -7,25 +7,19 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
-	    <meta http-equiv="Content-Security-Policy" content="upgrade-insecure-requests" />
 		<meta charset="utf-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css">
-		<link href="https://fonts.googleapis.com/css?family=Lato:300,400,700&display=swap" rel="stylesheet">
-		<link rel="stylesheet" href="~/css/main.css" />
 	</head>
 	
 	<body>
-	    
+	<link rel="stylesheet" href="~/css/main.css"/>
 		<div class="containerHeader">
 			<nav class="navbar navbar-expand navbar-light">
 				<a class="navbar-brand font-weight-bold">LOGO</a>
-				<ul class="navbar-nav">
-					@Model.Value("header", fallback: Fallback.ToDefaultValue, defaultValue: new HtmlString("Menu1 | Menu 2 | Menu 3"))
-				</ul>
+				<ul class="navbar-nav">@Model.Value("header", fallback: Fallback.ToDefaultValue, defaultValue: new HtmlString("Menu1 | Menu 2 | Menu 3"))</ul>
 			</nav>
 		</div>
-		
 		<div class="container">
 			<div class="row section">
 				<div class="col-lg-10">
@@ -33,36 +27,34 @@
                         <div class="form-group">
                             <label for="inputUsernamr">Username:</label>
                             <input type="text" class="form-control" id="usernameInput" aria-describedby="emailHelp" placeholder="Enter your full name">
-                            <small id="nameHelp" class="form-text text-muted">We'll never share your name with anyone else.</small>
+                            <small id="nameHelp" class="form-text text-muted">We'll never share your name</small>
                         </div>
                         <div class="form-group">
                             <label for="inputPassword">Passsword:</label>
                             <input type="password" class="form-control" id="passwordInput" placeholder="Password">
-                            <small id="passwordHelp" class="form-text text-muted">We'll never share your password with anyone else.</small>
+                            <small id="passwordHelp" class="form-text text-muted">We'll never share your password</small>
                         </div>
-                            <div class="form-group form-check">
-                        </div>
+                            <div class="form-group form-check"></div>
                         <button type="add" id="buttonAuthorization" onclick="sendRequestOnServer()" class="btn btn-primary">Submit</button>
                     </form>
 				</div>				
 			</div>
 			<div class="col-lg-10">
-			<div id="myAlertSuccess" class="alert alert-success" style = "display:none" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="13" height="24"/></svg>
-                <div id = "successResponse">
-                </div>
-            </div>
-            <div id="myAlertError" class="alert alert-danger" style = "display:none" role="alert">
-            <svg class="bi flex-shrink-0 me-2" width="10" height="10"/></svg>
-                <div id = "errorResponse">
-                    Error!
-                </div>
-            </div>
+				<div id="myAlertSuccess" class="alert alert-success" style = "display:none" role="alert">
+            		<svg class="bi flex-shrink-0 me-2" width="13" height="24"></svg>
+					<div id="successResponse"> </div>
+				</div>
+				<div id="myAlertError" class="alert alert-danger" style = "display:none" role="alert">
+            		<svg class="bi flex-shrink-0 me-2" width="10" height="10"></svg>
+                	<div id = "errorResponse">Error!</div>
+            	</div>
+				<div id="TooManyRequests" class="alert alert-danger" style="display:none" role="alert">
+					<svg class="bi flex-shrink-0 me-2" width="13" height="24"></svg>
+					<div id="manyRequests">Too many requests! Try later.</div>
+				</div>
             </div>	
 		</div>
 	<script src="~/scripts/handleServerResponseMessage.js"></script>	
 	<script src="~/scripts/request.js"></script>
-	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
-	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
 	</body>
 </html>
